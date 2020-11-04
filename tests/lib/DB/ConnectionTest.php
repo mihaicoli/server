@@ -219,7 +219,10 @@ class ConnectionTest extends \Test\TestCase {
 					'textfield' => $entry['user'],
 					'clobfield' => $entry['category'],
 				], null, [
-					'clobfield' => IQueryBuilder::PARAM_LOB,
+					IQueryBuilder::PARAM_STR,
+					IQueryBuilder::PARAM_LOB,
+					IQueryBuilder::PARAM_STR,
+					IQueryBuilder::PARAM_LOB,
 				]);
 			$this->assertEquals($entry['expectedResult'], $result);
 		}

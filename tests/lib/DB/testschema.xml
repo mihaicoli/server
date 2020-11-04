@@ -37,7 +37,7 @@
 			</field>
 			<field>
 				<name>clobfield</name>
-				<type>text</type>
+				<type>clob</type>
 			</field>
 			<field>
 				<name>booleanfield</name>

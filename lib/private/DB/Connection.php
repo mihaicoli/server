@@ -279,12 +279,13 @@ class Connection extends ReconnectWrapper implements IDBConnection {
 	 * @param array|null $compare List of values that should be checked for "if not exists"
 	 *				If this is null or an empty array, all keys of $input will be compared
 	 *				Please note: text fields (clob) must not be used in the compare array
+	 * @param array $types
 	 * @return int number of inserted rows
 	 * @throws \Doctrine\DBAL\DBALException
 	 * @deprecated 15.0.0 - use unique index and "try { $db->insert() } catch (UniqueConstraintViolationException $e) {}" instead, because it is more reliable and does not have the risk for deadlocks - see https://github.com/nextcloud/server/pull/12371
 	 */
-	public function insertIfNotExist($table, $input, array $compare = null) {
-		return $this->adapter->insertIfNotExist($table, $input, $compare);
+	public function insertIfNotExist($table, $input, array $compare = null, array $types = []) {
+		return $this->adapter->insertIfNotExist($table, $input, $compare, $types);
 	}
 
 	public function insertIgnoreConflict(string $table, array $values) : int {

@@ -157,7 +157,7 @@ class ConnectionTest extends \Test\TestCase {
 		$this->assertEquals('bar', $this->getTextValueByIntergerField(1));
 	}
 
-	
+
 	public function testSetValuesOverWritePreconditionFailed() {
 		$this->expectException(\OCP\PreConditionNotMetException::class);
 
@@ -218,6 +218,8 @@ class ConnectionTest extends \Test\TestCase {
 				[
 					'textfield' => $entry['user'],
 					'clobfield' => $entry['category'],
+				], null, [
+					'clobfield' => IQueryBuilder::PARAM_LOB,
 				]);
 			$this->assertEquals($entry['expectedResult'], $result);
 		}
@@ -335,7 +337,7 @@ class ConnectionTest extends \Test\TestCase {
 		$this->assertEquals(0, $result);
 	}
 
-	
+
 	public function testUniqueConstraintViolating() {
 		$this->expectException(\Doctrine\DBAL\Exception\UniqueConstraintViolationException::class);
 
